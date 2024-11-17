@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "probe-rs-debug",
+        "request": "launch",
+        "name": "probe_rs Executable launch example",
+        "cwd": "${workspaceFolder}",
+        "runtimeExecutable": "probe-rs",
+        "runtimeArgs": ["dap-server"],
+        "chip": "STM32F446RETx",
+        "connectUnderReset": true,
+        "flashingConfig": {
+          "flashingEnabled": true,
+          "haltAfterReset": true,
+          "formatOptions": {
+            "binaryFormat": "bin"
+          }
+        },
+        "coreConfigs": [
+          {
+            "coreIndex": 0,
+            "programBinary": "target/thumbv7em-none-eabihf/debug/stm32f446-test",
+          }
+        ],
+        "env": {
+          // If you set this variable, check the VSCode console log window for the location of the log file.
+          "RUST_LOG": "info"
+        },
+         // Info, Debug
+        "consoleLogLevel": "Console"
+      }
+    ]
+  }

@@ -1,0 +1,874 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "aa1f0046-6c1e-47a5-92d9-97e73c3173f9")
+	(paper "A4")
+	(lib_symbols
+		(symbol "TVP5150AM1PBSR:TVP5150AM1PBSR"
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 50.8 10.16 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Value" "TVP5150AM1PBSR"
+				(at 50.8 7.62 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Footprint" "PBS32"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "TVP5150AM1PBSR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "TVP5150AM1PBSR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "PBS32 PBS32-M PBS32-L"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TVP5150AM1PBSR_0_1"
+				(polyline
+					(pts
+						(xy 7.62 -43.18) (xy 93.98 -43.18)
+					)
+					(stroke
+						(width 0.127)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 5.08) (xy 7.62 -43.18)
+					)
+					(stroke
+						(width 0.127)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 93.98 -43.18) (xy 93.98 5.08)
+					)
+					(stroke
+						(width 0.127)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 93.98 5.08) (xy 7.62 5.08)
+					)
+					(stroke
+						(width 0.127)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin input line
+					(at 0 0 0)
+					(length 7.62)
+					(name "AIP1A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -22.86 0)
+					(length 7.62)
+					(name "IO_DVDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 0 -25.4 0)
+					(length 7.62)
+					(name "YOUT7/I2CSEL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 0 -27.94 0)
+					(length 7.62)
+					(name "YOUT6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 0 -30.48 0)
+					(length 7.62)
+					(name "YOUT5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 0 -33.02 0)
+					(length 7.62)
+					(name "YOUT4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 0 -35.56 0)
+					(length 7.62)
+					(name "YOUT3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 0 -38.1 0)
+					(length 7.62)
+					(name "YOUT2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 101.6 -38.1 180)
+					(length 7.62)
+					(name "YOUT1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "17"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 101.6 -35.56 180)
+					(length 7.62)
+					(name "YOUT0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "18"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 101.6 -33.02 180)
+					(length 7.62)
+					(name "DGND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "19"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 0 -2.54 0)
+					(length 7.62)
+					(name "AIP1B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 101.6 -30.48 180)
+					(length 7.62)
+					(name "DVDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "20"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 101.6 -27.94 180)
+					(length 7.62)
+					(name "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "21"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 101.6 -25.4 180)
+					(length 7.62)
+					(name "SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "22"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 101.6 -22.86 180)
+					(length 7.62)
+					(name "FID/GLCO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "23"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 101.6 -20.32 180)
+					(length 7.62)
+					(name "VSYNC/PALI"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "24"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 101.6 -17.78 180)
+					(length 7.62)
+					(name "HSYNC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "25"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 101.6 -15.24 180)
+					(length 7.62)
+					(name "AVID"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "26"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 101.6 -12.7 180)
+					(length 7.62)
+					(name "INTREQ/GPCL/VBLK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "27"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 101.6 -10.16 180)
+					(length 7.62)
+					(name "PDN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "28"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 101.6 -7.62 180)
+					(length 7.62)
+					(name "REFP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "29"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -5.08 0)
+					(length 7.62)
+					(name "PLL_AGND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 101.6 -5.08 180)
+					(length 7.62)
+					(name "REFM"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "30"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 101.6 -2.54 180)
+					(length 7.62)
+					(name "CH1_AGND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "31"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 101.6 0 180)
+					(length 7.62)
+					(name "CH1_AVDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "32"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -7.62 0)
+					(length 7.62)
+					(name "PLL_AVDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 0 -10.16 0)
+					(length 7.62)
+					(name "XTAL1/OSC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 0 -12.7 0)
+					(length 7.62)
+					(name "XTAL2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 0 -15.24 0)
+					(length 7.62)
+					(name "NSUB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 0 -17.78 0)
+					(length 7.62)
+					(name "*RESETB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 0 -20.32 0)
+					(length 7.62)
+					(name "SCLK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TVP5150AM1PBSR:TVP5150AM1PBSR")
+		(at 81.28 68.58 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5efc94d2-fed2-4f08-bc3a-a87445412a6a")
+		(property "Reference" "U2"
+			(at 132.08 58.8061 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "TVP5150AM1PBSR"
+			(at 132.08 61.639 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "PBS32"
+			(at 81.28 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "TVP5150AM1PBSR"
+			(at 81.28 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 81.28 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "12"
+			(uuid "921c7c17-480c-453f-8ecf-cb3637b104f0")
+		)
+		(pin "19"
+			(uuid "6db93746-4256-40ee-adc4-f94936db9b75")
+		)
+		(pin "9"
+			(uuid "558e2afb-6e3e-424b-9e0b-62abbfe0a977")
+		)
+		(pin "13"
+			(uuid "98624e27-36b1-414e-b1f4-97903e57605e")
+		)
+		(pin "15"
+			(uuid "03873f88-32c5-48be-bea5-91cc87ac32d0")
+		)
+		(pin "18"
+			(uuid "53cabc8d-5def-4e18-ac8b-9ebf44891353")
+		)
+		(pin "4"
+			(uuid "f095d264-77ff-458d-aeaf-faca21ca3bc2")
+		)
+		(pin "5"
+			(uuid "ac979cc1-5d6e-42c3-afa4-1ce1f2572a13")
+		)
+		(pin "30"
+			(uuid "15658f28-56d9-4e56-8415-3224b8acf756")
+		)
+		(pin "14"
+			(uuid "cc3e03f7-84ea-4de7-933d-d80611798b28")
+		)
+		(pin "2"
+			(uuid "ca5b6bdd-dc63-4e4a-b969-c012d3afa394")
+		)
+		(pin "20"
+			(uuid "02aaabf8-01de-47ac-945f-8ed766a07b9e")
+		)
+		(pin "11"
+			(uuid "71fc6ed4-3c6a-4127-9cb3-7daf0371abd1")
+		)
+		(pin "17"
+			(uuid "5e19204d-9b84-4d9f-834b-c9fee42e8897")
+		)
+		(pin "23"
+			(uuid "0bddf618-654c-42d1-b531-7fe5ab8599ee")
+		)
+		(pin "28"
+			(uuid "58b19121-e4f6-4b1c-8cd6-e00e61ae4191")
+		)
+		(pin "31"
+			(uuid "c1d1787f-1ca8-4f35-b84e-7dd7278190ad")
+		)
+		(pin "22"
+			(uuid "13780ec3-0a1c-4ec7-a3ad-53c01eea765c")
+		)
+		(pin "6"
+			(uuid "f97ce7e7-c24f-467c-b1ae-35995c1613e8")
+		)
+		(pin "21"
+			(uuid "199ba0f6-a5ed-4c1b-9346-eb36f344fcce")
+		)
+		(pin "26"
+			(uuid "045d69bf-7713-44c7-b6f7-7654c086d889")
+		)
+		(pin "29"
+			(uuid "67a17f80-2fba-42f1-8b93-5fcf7827b0ab")
+		)
+		(pin "1"
+			(uuid "7c10ec58-d0b6-440b-b1a9-e565edd52717")
+		)
+		(pin "3"
+			(uuid "31908995-0e04-40b3-bfa7-c9c5fcf56890")
+		)
+		(pin "24"
+			(uuid "c09f431d-9ce1-4bff-a055-bb855dd6708b")
+		)
+		(pin "7"
+			(uuid "1d5c96ac-91a3-42cb-817d-7e99b607c503")
+		)
+		(pin "10"
+			(uuid "147565e5-a589-4fce-a625-ad839a846648")
+		)
+		(pin "16"
+			(uuid "83b5a1b0-24f7-4ceb-8888-6de5f649592b")
+		)
+		(pin "25"
+			(uuid "903dea8e-b133-4306-b43c-d0f3c2a0a1c7")
+		)
+		(pin "27"
+			(uuid "3fe78ffb-232e-44dd-9c0f-0a1344e6278c")
+		)
+		(pin "32"
+			(uuid "016e1e33-1dc3-4f03-8796-102fa6cc3f6d")
+		)
+		(pin "8"
+			(uuid "b22ac180-9bd8-450f-9f47-37413bc81e96")
+		)
+		(instances
+			(project ""
+				(path "/1bf4c9e5-a994-449e-bd91-dc55ebeb0111/dfae08f6-fa7f-49ec-beba-038a3efaebe2"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

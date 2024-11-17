@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP IS42S32400F-6TL-TR
+D DRAM Chip SDRAM 128Mbit 4Mx32 3.3V 86-Pin TSOP-II T/R
+K
+F https://datasheet.datasheetarchive.com/originals/dk/DKDS41/DSANUWW0023557.pdf
+$ENDCMP
+#
+#End Doc Library
