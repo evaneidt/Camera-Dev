@@ -1,0 +1,98 @@
+
+### Notes
+* Use internal VREF regulator
+* OSD Mapping: (Center - 0), (Up - 1), (Left - 2), (Down - 3), (Right - 4)
+
+### Port A
+PA0     : I2S WS
+PA1     : QSPI IO3
+PA2     : x
+PA3     : x
+PA4     : DAC nCS
+PA5     : I2S SCK
+PA6     : CAM CLK
+PA7     : RAM CLK
+PA8     : x 
+PA9     : USB VBUS
+PA10    : YOUT1
+PA11    : USB D-
+PA12    : USB D+
+PA13    : SWD DIO
+PA14    : SWD CLK
+PA15    : HDMI CEC
+
+### Port B
+PB0     : QSPI IO1
+PB1     : QSPI IO0
+PB2     : QSPI CLK
+PB3     : SWD O
+PB4     : I2S SD
+PB5     : OSD EN
+PB6     : OSD A0
+PB7     : OSD A1
+PB8     : OSD A2
+PB9     : x
+PB10    : I2C SCL
+PB11    : I2C SDA
+PB12    : I2S MCLK CTRL
+PB13    : YOUT2
+PB14    : HDMI INT
+PB15    : nREC INT
+
+### Port C
+PC0     : x
+PC1     : x
+PC2     : x
+PC3     : x
+PC4     : x
+PC5     : x
+PC6     : YOUT0
+PC7     : x
+PC8     : ADDR IN
+PC9     : YOUT3
+PC10    : DAC CLK
+PC11    : x 
+PC12    : DAC MOSI
+PC13    : x
+PC14    : 32.768 kHz OSC
+PC15    : x
+
+### Port D
+PD0     : RAM nPD
+PD1     : CAM PD
+PD2     : SR nCLR
+PD3     : YOUT5
+PD4     : RAM nDQM
+PD5     : RAM nWE
+PD6     : RAM nCAS
+PD7     : RAM nRAS
+PD8     : LED R
+PD9     : LED G
+PD10    : LED B
+PD11    : ADDR nOE
+PD12    : DATA nOE
+PD13    : DATA CLK
+PD14    : DATA IN
+PD15    : ADDR CLK
+
+### Port E
+PE0     : x
+PE1     : x
+PE2     : QSPI IO2
+PE3     : x
+PE4     : YOUT4
+PE5     : YOUT6
+PE6     : YOUT7
+PE7     : x
+PE8     : x
+PE9     : HDMI CLK
+PE10    : EEPROM nWC
+PE11    : QSPI nCS
+PE12    : x
+PE13    : x
+PE14    : x
+PE15    : x
+
+### Port H
+PH0     : 50 MHz OSC
+PH1     : x
