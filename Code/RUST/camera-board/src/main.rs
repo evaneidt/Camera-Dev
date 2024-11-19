@@ -9,15 +9,18 @@ use panic_halt as _;
 use {defmt_rtt as _, panic_probe as _};
 
 use embassy_executor::Spawner;
-use embassy_stm32::{bind_interrupts, i2c, peripherals, Config, spi, i2s};
+use embassy_stm32::{bind_interrupts, peripherals, Config};
 use embassy_stm32::dcmi::{self, *};
 use embassy_stm32::gpio::{Level, Output, Speed, Pull, Input};
 use embassy_stm32::exti::ExtiInput;
-use embassy_stm32::i2c::I2c;
-use embassy_stm32::i2s::I2S;
-use embassy_stm32::spi::Spi;
-use embassy_stm32::time::{khz, mhz};
+use embassy_stm32::i2c::{self, I2c};
+use embassy_stm32::i2s::{self, I2S};
+use embassy_stm32::spi::{self, Spi};
+use embassy_stm32::ospi::{self, Ospi};
+use embassy_stm32::time::{hz, khz, mhz};
 use embassy_time::{Duration, Timer};
+use embassy_sync::mutex::Mutex;
+use embassy_sync::blocking_mutex::raw::ThreadModeRawMutex;
 use fmt::info;
 
 bind_interrupts!(struct Irqs {
@@ -26,11 +29,22 @@ bind_interrupts!(struct Irqs {
     DCMI_PSSI => dcmi::InterruptHandler<peripherals::DCMI>;
 });
 
+static OSD_MUTEX: Mutex<ThreadModeRawMutex, u32> = Mutex::new(0);
+
 #[embassy_executor::main]
 async fn main(_spawner: Spawner) {
     let mut config = Config::default();
     {
         use embassy_stm32::rcc::*;
+        config.rcc.hse = Some( Hse {
+            freq: mhz(50), 
+            mode: HseMode::Bypass,
+        });
+        config.rcc.ls = LsConfig{
+            rtc: RtcClockSource::LSE,
+            lsi: false,
+            lse: Some( LseConfig{frequency: hz(32_768), mode: LseMode::Bypass}),
+        };
         config.rcc.hsi = Some(HSIPrescaler::DIV1);
         config.rcc.csi = true;
         config.rcc.pll1 = Some(Pll {
@@ -49,15 +63,32 @@ async fn main(_spawner: Spawner) {
         config.rcc.apb4_pre = APBPrescaler::DIV2;
         config.rcc.voltage_scale = VoltageScale::Scale1;
     }
-    let p = embassy_stm32::init(config);
+    let p: embassy_stm32::Peripherals = embassy_stm32::init(config);
 
     defmt::info!("Booting...");
-
-    // let mco = Mco::new(p.MCO1, p.PA8, Mco1Source::HSI, McoPrescaler::DIV3);
 
     let mut led_r = Output::new(p.PD8, Level::Low, Speed::Low);
     let mut led_g = Output::new(p.PD9, Level::Low, Speed::Low);
     let mut led_b = Output::new(p.PD10, Level::Low, Speed::Low);
+
+    let mut osd_en: Output<'_> = Output::new(p.PB5, Level::Low, Speed::Low);
+    let mut osd_a0: Output<'_> = Output::new(p.PB6, Level::Low, Speed::Low);
+    let mut osd_a1: Output<'_> = Output::new(p.PB7, Level::Low, Speed::Low);
+    let mut osd_a2: Output<'_> = Output::new(p.PB8, Level::Low, Speed::Low);
+
+    let mut i2s_mclk_ctrl: Output<'_> = Output::new(p.PB12, Level::Low, Speed::Low);
+    let mut sr_nclr: Output<'_> = Output::new(p.PD2, Level::High, Speed::Low);
+
+    let mut eeprom_nwc: Output<'_> = Output::new(p.PE10, Level::High, Speed::Low);
+
+    let mut cam_pd: Output<'_> = Output::new(p.PD1, Level::Low, Speed::Low);
+    let mut ram_npd: Output<'_> = Output::new(p.PD0, Level::High, Speed::Low);
+    let mut ram_ndqm: Output<'_> = Output::new(p.PD4, Level::High, Speed::Low);
+    let mut ram_nwe: Output<'_> = Output::new(p.PD5, Level::High, Speed::Low);
+    let mut ram_ncas: Output<'_> = Output::new(p.PD6, Level::High, Speed::Low);
+    let mut ram_nras: Output<'_> = Output::new(p.PD7, Level::High, Speed::Low);
+    let mut addr_noe: Output<'_> = Output::new(p.PD11, Level::High, Speed::Low);
+    let mut data_noe: Output<'_> = Output::new(p.PD12, Level::High, Speed::Low);
 
     let i2c_bus = I2c::new(
         p.I2C2, // peri
@@ -97,13 +128,53 @@ async fn main(_spawner: Spawner) {
         p.SPI6, p.PB4, p.PA0, p.PA5, p.PA3, p.BDMA2_CH0, &mut mic_buffer, khz(44), config,
     );
 
-    let mut led = Output::new(p.PB7, Level::High, Speed::Low);
+    let mut config = ospi::Config::default();
+    config.memory_type = ospi::MemoryType::Standard;
+    config.device_size = ospi::MemorySize::_16MiB;
+    config.wrap_size = ospi::WrapSize::_64Bytes;
+    config.chip_select_high_time = ospi::ChipSelectHighTime::_1Cycle;
+    let mut flash_qspi = Ospi::new_blocking_quadspi(
+        p.OCTOSPI2, p.PB2, p.PB1, p.PB0, p.PE2, p.PA1, p.PE11, config
+    );
 
     loop {
         info!("Hello, World!");
-        led.set_high();
-        Timer::after(Duration::from_millis(500)).await;
-        led.set_low();
-        Timer::after(Duration::from_millis(500)).await;
+        set_osd(osd_map::CENTER, &mut osd_en, &mut osd_a0, &mut osd_a1, &mut osd_a2).await;
     }
+}
+
+pub mod osd_map {
+    pub const CENTER: u8 = 0;
+    pub const UP: u8     = 1;
+    pub const LEFT: u8   = 2;
+    pub const DOWN: u8   = 3;
+    pub const RIGHT: u8  = 4;
+}
+
+async fn set_osd(
+    input: u8, 
+    osd_en: &mut Output<'_>, 
+    osd_a0: &mut Output<'_>, 
+    osd_a1: &mut Output<'_>, 
+    osd_a2: &mut Output<'_>,
+    ) {
+
+        // Async lock this function to prevent multiple threads configuring osd at once
+        let lock = OSD_MUTEX.lock().await;
+
+        if osd_en.is_set_high() { // Ensure the OSD controller enable is not set
+            osd_en.set_low();
+        }
+
+        // Extract bits from the input and set the appropriate gpio outputs
+        osd_a0.set_level(Level::from(((input >> 0) & 1) != 0));
+        osd_a1.set_level(Level::from(((input >> 1) & 1) != 0));
+        osd_a2.set_level(Level::from(((input >> 2) & 1) != 0));
+
+        // Enable the osd output and sleep 200 ms then turn off ("button press")
+        osd_en.set_high();
+        Timer::after(Duration::from_millis(200)).await;
+        osd_en.set_low();
+
+        drop(lock);
 }
