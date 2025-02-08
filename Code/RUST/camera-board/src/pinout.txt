@@ -67,8 +67,8 @@ PD5     : RAM nWE
 PD6     : RAM nCAS
 PD7     : RAM nRAS
 PD8     : LED R
-PD9     : LED G
-PD10    : LED B
+PD9     : LED B
+PD10    : LED G
 PD11    : ADDR nOE
 PD12    : DATA nOE
 PD13    : DATA CLK
